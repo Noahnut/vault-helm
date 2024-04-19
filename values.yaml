@@ -46,7 +46,7 @@ global:
 injector:
   # True if you want to enable vault agent injection.
   # @default: global.enabled
-  enabled: "-"
+  enabled: true
 
   replicas: 1
 
@@ -68,7 +68,7 @@ injector:
   # image sets the repo and tag of the vault-k8s image to use for the injector.
   image:
     repository: "hashicorp/vault-k8s"
-    tag: "1.4.1"
+    tag: "latest"
     pullPolicy: IfNotPresent
 
   # agentImage sets the repo and tag of the Vault image to use for the Vault Agent
@@ -267,7 +267,13 @@ injector:
     pod: {}
     container: {}
 
-  resources: {}
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 250m
+    limits:
+      memory: 1Gi
+      cpu: 500m
   # resources:
   #   requests:
   #     memory: 256Mi
@@ -873,7 +879,7 @@ server:
   # Helm project by default.  It is possible to manually configure Vault to use a
   # different HA backend.
   ha:
-    enabled: false
+    enabled: true
     replicas: 3
 
     # Set the api_addr configuration for Vault HA
