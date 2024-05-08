@@ -820,7 +820,7 @@ server:
   # use dev mode for anything other than experimenting.
   # See https://developer.hashicorp.com/vault/docs/concepts/dev-server to know more
   dev:
-    enabled: false
+    enabled: true
 
     # Set VAULT_DEV_ROOT_TOKEN_ID value
     devRootToken: "root"
@@ -1173,7 +1173,7 @@ csi:
     extraLabels: {}
 
   agent:
-    enabled: true
+    enabled: false
     extraArgs: []
 
     image:
